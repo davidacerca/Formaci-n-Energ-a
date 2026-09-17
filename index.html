@@ -92,36 +92,37 @@ label{display:block;font-size:12px;font-weight:700;margin:13px 0 6px}input,texta
 </div>
 
 <div id="adminArea" class="hidden">
-<section id="a-summary"><div class="top"><div><div class="eyebrow">ADMINISTRACIÓN</div><h1 class="title">Resumen</h1><div class="subtitle">Vista general de la actividad de formación.</div></div><button class="excel" onclick="exportCSV()">↓ &nbsp; Descargar Excel</button></div>
-<div class="cards"><div class="card stat"><span>Trabajadores registrados</span><b>48</b></div><div class="card stat"><span>Cursos iniciados</span><b class="blue">41</b></div><div class="card stat"><span>Cursos finalizados</span><b class="green">27</b></div><div class="card stat"><span>Comentarios pendientes</span><b class="orange">5</b></div></div>
-<div class="tablebox"><div class="sectionhead"><div class="sectiontitle">Actividad reciente</div><div class="sectionsub">Últimos trabajadores que han accedido al curso.</div></div><table class="table"><tr><th>Usuario</th><th>Progreso</th><th>Accesos</th><th>Último acceso</th><th>Estado</th></tr>
-<tr><td><b>maria.garcia@empresa.com</b></td><td>100%</td><td>14</td><td>17/09/2026 10:42</td><td><span class="badge done">Finalizado</span></td></tr>
-<tr><td><b>carlos.lopez@empresa.com</b></td><td>72%</td><td>9</td><td>17/09/2026 09:18</td><td><span class="badge open">En curso</span></td></tr>
-<tr><td><b>ana.martin@empresa.com</b></td><td>46%</td><td>6</td><td>16/09/2026 16:31</td><td><span class="badge open">En curso</span></td></tr>
-<tr><td><b>javier.ruiz@empresa.com</b></td><td>100%</td><td>18</td><td>16/09/2026 13:07</td><td><span class="badge done">Finalizado</span></td></tr></table></div></section>
+<section id="a-summary"><div class="top"><div><div class="eyebrow">ADMINISTRACIÓN</div><h1 class="title">Resumen</h1><div class="subtitle">Vista general de la actividad de formación. Los datos se generan con los accesos realizados en esta prueba.</div></div><button class="excel" onclick="exportCSV()">↓ &nbsp; Descargar Excel</button></div>
+<div id="adminStats" class="cards"></div>
+<div class="tablebox"><div class="sectionhead"><div class="sectiontitle">Actividad reciente</div><div class="sectionsub">Datos generados por accesos reales realizados en esta demo.</div></div>
+<table class="table"><thead><tr><th>Usuario</th><th>Progreso</th><th>Accesos</th><th>Último acceso</th><th>Estado</th></tr></thead><tbody id="recentBody"></tbody></table></div></section>
 
 <section id="a-courses" class="hidden"><div class="top"><div><div class="eyebrow">ADMINISTRACIÓN</div><h1 class="title">Cursos realizados</h1><div class="subtitle">Seguimiento detallado de todos los trabajadores.</div></div><button class="excel" onclick="exportCSV()">↓ &nbsp; Descargar Excel</button></div>
-<div class="tablebox"><table class="table"><tr><th>Usuario</th><th>Progreso</th><th>Accesos</th><th>Tiempo total</th><th>Último acceso</th><th>Estado</th><th>Detalle</th></tr>
-<tr><td><b>maria.garcia@empresa.com</b></td><td>100%</td><td>14</td><td>6h 24m</td><td>17/09/2026 10:42</td><td><span class="badge done">Finalizado</span></td><td><span class="view" onclick="detail('maria.garcia@empresa.com','100%','14','6h 24m')">Ver</span></td></tr>
-<tr><td><b>carlos.lopez@empresa.com</b></td><td>72%</td><td>9</td><td>4h 12m</td><td>17/09/2026 09:18</td><td><span class="badge open">En curso</span></td><td><span class="view" onclick="detail('carlos.lopez@empresa.com','72%','9','4h 12m')">Ver</span></td></tr>
-<tr><td><b>ana.martin@empresa.com</b></td><td>46%</td><td>6</td><td>2h 48m</td><td>16/09/2026 16:31</td><td><span class="badge open">En curso</span></td><td><span class="view" onclick="detail('ana.martin@empresa.com','46%','6','2h 48m')">Ver</span></td></tr>
-<tr><td><b>javier.ruiz@empresa.com</b></td><td>100%</td><td>18</td><td>7h 05m</td><td>16/09/2026 13:07</td><td><span class="badge done">Finalizado</span></td><td><span class="view" onclick="detail('javier.ruiz@empresa.com','100%','18','7h 05m')">Ver</span></td></tr></table></div></section>
+<div class="tablebox"><table class="table"><thead><tr><th>Usuario</th><th>Progreso</th><th>Accesos</th><th>Tiempo total</th><th>Último acceso</th><th>Estado</th><th>Detalle</th></tr></thead><tbody id="coursesBody"></tbody></table></div></section>
 
 <section id="a-comments" class="hidden"><div class="top"><div><div class="eyebrow">ADMINISTRACIÓN</div><h1 class="title">Comentarios</h1><div class="subtitle">Dudas y consultas enviadas por los trabajadores.</div></div></div>
-<div class="tablebox"><table class="table"><tr><th>Usuario</th><th>Asunto</th><th>Comentario</th><th>Fecha</th><th>Estado</th></tr>
-<tr><td><b>carlos.lopez@empresa.com</b></td><td>Acceso al módulo 3</td><td>No me aparece desbloqueado el siguiente contenido.</td><td>17/09/2026</td><td><span class="badge open">Pendiente</span></td></tr>
-<tr><td><b>ana.martin@empresa.com</b></td><td>Duda sobre tarifarios</td><td>¿Dónde puedo consultar el ejemplo que vimos en el vídeo?</td><td>16/09/2026</td><td><span class="badge open">Pendiente</span></td></tr>
-<tr><td><b>javier.ruiz@empresa.com</b></td><td>Finalización</td><td>He terminado el curso correctamente.</td><td>16/09/2026</td><td><span class="badge done">Revisado</span></td></tr></table></div></section>
+<div class="tablebox"><table class="table"><thead><tr><th>Usuario</th><th>Asunto</th><th>Comentario</th><th>Fecha</th><th>Estado</th></tr></thead><tbody id="commentsBody"></tbody></table></div></section>
 </div>
 </main></div>
 
 <div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()"><div class="modalbox"><div class="modalhead"><div><div class="eyebrow">FICHA DEL TRABAJADOR</div><h2 id="muser" style="margin:4px 0 0;font-size:20px"></h2></div><button class="close" onclick="closeModal()">×</button></div><div id="mstats" class="detail"></div><h3 style="font-size:14px">Historial de accesos</h3><div class="tablebox"><table class="table" style="min-width:0"><tr><th>Fecha y hora</th><th>IP</th><th>Duración</th></tr><tr><td>17/09/2026 09:18</td><td>192.168.1.45</td><td>34 min</td></tr><tr><td>16/09/2026 16:02</td><td>192.168.1.45</td><td>51 min</td></tr><tr><td>15/09/2026 10:21</td><td>192.168.1.46</td><td>42 min</td></tr></table></div></div></div>
 
 <script>
-const STUDENT="davidolivaresfernandez@acerca.info", ADMIN="AdminFormacion", PASS="FormacionAcerca";
+const STUDENTS=["davidolivaresfernandez@acerca.info","aranzazutejerina@acerca.info"], ADMIN="AdminFormacion", PASS="FormacionAcerca";
 let role="student", user="", current=0;
-let done=JSON.parse(localStorage.getItem("acerca_progress")||"[]");
-let sent=JSON.parse(localStorage.getItem("acerca_comments")||"[]");
+let done=[];
+let sent=[];
+function userKey(){return (user||"").toLowerCase().replace(/[^a-z0-9@._-]/g,"_")}
+function loadUserData(){
+  done=JSON.parse(localStorage.getItem("acerca_progress_"+userKey())||"[]");
+  sent=JSON.parse(localStorage.getItem("acerca_comments_"+userKey())||"[]");
+}
+function saveUserData(){
+  localStorage.setItem("acerca_progress_"+userKey(),JSON.stringify(done));
+  localStorage.setItem("acerca_comments_"+userKey(),JSON.stringify(sent));
+}
+function accessLog(){return JSON.parse(localStorage.getItem("acerca_access_log")||"[]")}
+function saveAccessLog(log){localStorage.setItem("acerca_access_log",JSON.stringify(log))}
 
 const mods=[
 ["intro","video","Video inicial","Presentación de la formación"],
@@ -143,9 +144,16 @@ const mods=[
 function setRole(r){role=r;document.getElementById("rStudent").classList.toggle("active",r==="student");document.getElementById("rAdmin").classList.toggle("active",r==="admin");document.getElementById("passWrap").classList.toggle("hidden",r!=="admin");document.getElementById("ulabel").textContent=r==="student"?"Correo electrónico":"Usuario";document.getElementById("user").placeholder=r==="student"?"Introduce tu correo":"Introduce tu usuario";document.getElementById("user").value="";document.getElementById("pass").value="";document.getElementById("err").classList.add("hidden")}
 function login(){
 let u=document.getElementById("user").value.trim(),p=document.getElementById("pass").value;
-let ok=(role==="student"&&u.toLowerCase()===STUDENT.toLowerCase())||(role==="admin"&&u===ADMIN&&p===PASS);
+let ok=(role==="student"&&STUDENTS.some(s=>s.toLowerCase()===u.toLowerCase()))||(role==="admin"&&u===ADMIN&&p===PASS);
 if(!ok){let e=document.getElementById("err");e.textContent=role==="student"?"Correo no autorizado.":"Usuario o contraseña incorrectos.";e.classList.remove("hidden");return}
-user=u;document.getElementById("login").classList.add("hidden");document.getElementById("app").classList.remove("hidden");document.getElementById("studentArea").classList.toggle("hidden",role!=="student");document.getElementById("adminArea").classList.toggle("hidden",role!=="admin");document.getElementById("studentNav").classList.toggle("hidden",role!=="student");document.getElementById("adminNav").classList.toggle("hidden",role!=="admin");document.getElementById("brandRole").textContent=role==="student"?"FORMACIÓN · GRUPO ACERCA":"ADMINISTRACIÓN · GRUPO ACERCA";document.getElementById("pname").textContent=role==="student"?"David Olivares":"Administrador";document.getElementById("pemail").textContent=u;document.getElementById("avatar").textContent=role==="student"?"DO":"AD";if(role==="student"){render();studentPage("home",document.querySelector("#studentNav .navitem"))}else adminPage("summary",document.querySelector("#adminNav .navitem"))}
+user=u;
+if(role==="student"){
+  loadUserData();
+  let log=accessLog();
+  log.push({user:u.toLowerCase(),role:"Formación",date:new Date().toISOString()});
+  saveAccessLog(log);
+}
+document.getElementById("login").classList.add("hidden");document.getElementById("app").classList.remove("hidden");document.getElementById("studentArea").classList.toggle("hidden",role!=="student");document.getElementById("adminArea").classList.toggle("hidden",role!=="admin");document.getElementById("studentNav").classList.toggle("hidden",role!=="student");document.getElementById("adminNav").classList.toggle("hidden",role!=="admin");document.getElementById("brandRole").textContent=role==="student"?"FORMACIÓN · GRUPO ACERCA":"ADMINISTRACIÓN · GRUPO ACERCA";document.getElementById("pname").textContent=role==="student"?"David Olivares":"Administrador";document.getElementById("pemail").textContent=u;document.getElementById("avatar").textContent=role==="student"?"DO":"AD";if(role==="student"){render();studentPage("home",document.querySelector("#studentNav .navitem"))}else {renderAdmin();adminPage("summary",document.querySelector("#adminNav .navitem"))}}
 function logout(){document.getElementById("app").classList.add("hidden");document.getElementById("login").classList.remove("hidden");setRole("student")}
 function unlocked(i){return i===0||done.includes(mods[i-1][0])}function completed(id){return done.includes(id)}
 function pct(){return Math.round(done.length/mods.length*100)}
@@ -157,12 +165,79 @@ if(m[1]==="video")body=`<div class="card content"><div class="video"><div class=
 else if(m[1]==="ppt")body=`<div class="card content"><div class="ppt"><h2>${m[2]}</h2><p>Vista previa del PPT resumen. En la versión definitiva podrás visualizar el documento real dentro de la plataforma.</p></div><button class="complete" onclick="finish()">✓ Marcar resumen como visto</button></div>`;
 else body=`<div class="card content"><h2 style="margin-top:0">Formulario tipo test</h2><p style="font-size:13px;color:#718099">Demo funcional. Debes acertar las dos preguntas para continuar.</p><div class="q"><b>1. ¿Qué debe ocurrir para desbloquear el siguiente contenido?</b><label class="option"><input type="radio" name="q1" value="a"> Completar el contenido actual</label><label class="option"><input type="radio" name="q1" value="b"> Entrar varias veces</label></div><div class="q"><b>2. ¿Puede el trabajador volver a un contenido completado?</b><label class="option"><input type="radio" name="q2" value="a"> Sí</label><label class="option"><input type="radio" name="q2" value="b"> No</label></div><button class="complete" onclick="test()">✓ Finalizar test</button></div>`;
 document.getElementById("contentBody").innerHTML=body}
-function finish(){if(!done.includes(mods[current][0]))done.push(mods[current][0]);localStorage.setItem("acerca_progress",JSON.stringify(done));render();alert("Contenido completado. El siguiente queda desbloqueado.");openContent(current)}
+function finish(){if(!done.includes(mods[current][0]))done.push(mods[current][0]);localStorage.setItem("acerca_progress_"+userKey(),JSON.stringify(done));render();alert("Contenido completado. El siguiente queda desbloqueado.");openContent(current)}
 function test(){let a=document.querySelector('input[name="q1"]:checked'),b=document.querySelector('input[name="q2"]:checked');if(!a||!b)return alert("Completa todas las preguntas.");if(a.value!=="a"||b.value!=="a")return alert("Hay una respuesta incorrecta. Inténtalo de nuevo.");finish()}
-function sendComment(){let s=document.getElementById("subject").value.trim(),c=document.getElementById("comment").value.trim();if(!s||!c)return alert("Completa el asunto y el comentario.");sent.push({user,subject:s,comment:c,date:new Date().toLocaleString("es-ES")});localStorage.setItem("acerca_comments",JSON.stringify(sent));document.getElementById("subject").value="";document.getElementById("comment").value="";alert("Comentario enviado correctamente. En producción se enviará también al correo configurado.")}
-function adminPage(page,el){document.querySelectorAll("#adminArea>section").forEach(s=>s.classList.add("hidden"));document.getElementById("a-"+page).classList.remove("hidden");document.querySelectorAll("#adminNav .navitem").forEach(x=>x.classList.remove("active"));if(el)el.classList.add("active")}
+function sendComment(){let s=document.getElementById("subject").value.trim(),c=document.getElementById("comment").value.trim();if(!s||!c)return alert("Completa el asunto y el comentario.");sent.push({user,subject:s,comment:c,date:new Date().toLocaleString("es-ES")});localStorage.setItem("acerca_comments_"+userKey(),JSON.stringify(sent));document.getElementById("subject").value="";document.getElementById("comment").value="";alert("Comentario enviado correctamente. En producción se enviará también al correo configurado.")}
+function adminPage(page,el){
+  document.querySelectorAll("#adminArea>section").forEach(s=>s.classList.add("hidden"));
+  document.getElementById("a-"+page).classList.remove("hidden");
+  document.querySelectorAll("#adminNav .navitem").forEach(x=>x.classList.remove("active"));
+  if(el)el.classList.add("active");
+  renderAdmin();
+}
+
+function allTrainingUsers(){
+  const log=accessLog(), users=new Set(log.map(x=>x.user));
+  return Array.from(users);
+}
+function userProgress(u){
+  const d=JSON.parse(localStorage.getItem("acerca_progress_"+u.replace(/[^a-z0-9@._-]/g,"_"))||"[]");
+  return Math.round(d.length/mods.length*100);
+}
+function userComments(u){
+  return JSON.parse(localStorage.getItem("acerca_comments_"+u.replace(/[^a-z0-9@._-]/g,"_"))||"[]");
+}
+function formatDate(iso){
+  if(!iso)return "-";
+  return new Date(iso).toLocaleString("es-ES",{dateStyle:"short",timeStyle:"short"});
+}
+function renderAdmin(){
+  const log=accessLog(), users=allTrainingUsers();
+  const finished=users.filter(u=>userProgress(u)===100).length;
+  const pending=users.reduce((n,u)=>n+userComments(u).filter(c=>c.status!=="Revisado").length,0);
+  document.getElementById("adminStats").innerHTML=
+    `<div class="card stat"><span>Trabajadores con acceso</span><b>${users.length}</b></div>
+     <div class="card stat"><span>Cursos iniciados</span><b class="blue">${users.length}</b></div>
+     <div class="card stat"><span>Cursos finalizados</span><b class="green">${finished}</b></div>
+     <div class="card stat"><span>Comentarios pendientes</span><b class="orange">${pending}</b></div>`;
+
+  const sorted=[...users].sort((a,b)=>{
+    const la=log.filter(x=>x.user===a).map(x=>x.date).sort().pop()||"";
+    const lb=log.filter(x=>x.user===b).map(x=>x.date).sort().pop()||"";
+    return lb.localeCompare(la);
+  });
+  document.getElementById("recentBody").innerHTML=sorted.length?sorted.map(u=>{
+    const ul=log.filter(x=>x.user===u).sort((a,b)=>b.date.localeCompare(a.date));
+    const p=userProgress(u), status=p===100?'<span class="badge done">Finalizado</span>':'<span class="badge open">En curso</span>';
+    return `<tr><td><b>${u}</b></td><td>${p}%</td><td>${ul.length}</td><td>${formatDate(ul[0]?.date)}</td><td>${status}</td></tr>`;
+  }).join(""):`<tr><td colspan="5" style="text-align:center;color:#718099;padding:35px">Todavía no hay accesos de formación registrados.</td></tr>`;
+
+  document.getElementById("coursesBody").innerHTML=sorted.length?sorted.map(u=>{
+    const ul=log.filter(x=>x.user===u).sort((a,b)=>b.date.localeCompare(a.date));
+    const p=userProgress(u), comments=userComments(u), status=p===100?'<span class="badge done">Finalizado</span>':'<span class="badge open">En curso</span>';
+    return `<tr><td><b>${u}</b></td><td>${p}%</td><td>${ul.length}</td><td>Demo</td><td>${formatDate(ul[0]?.date)}</td><td>${status}</td><td><span class="view" onclick="detail('${u}','${p}%','${ul.length}','No registrado en esta demo')">Ver</span></td></tr>`;
+  }).join(""):`<tr><td colspan="7" style="text-align:center;color:#718099;padding:35px">Todavía no hay trabajadores que hayan accedido.</td></tr>`;
+
+  const allComments=users.flatMap(u=>userComments(u).map(c=>({...c,user:u}))).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  document.getElementById("commentsBody").innerHTML=allComments.length?allComments.map(c=>
+    `<tr><td><b>${c.user}</b></td><td>${escapeHtml(c.subject)}</td><td>${escapeHtml(c.comment)}</td><td>${escapeHtml(c.date)}</td><td><span class="badge ${c.status==="Revisado"?"done":"open"}">${c.status||"Pendiente"}</span></td></tr>`
+  ).join(""):`<tr><td colspan="5" style="text-align:center;color:#718099;padding:35px">No hay comentarios enviados todavía.</td></tr>`;
+}
+function escapeHtml(s){
+  return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
 function detail(u,p,a,t){document.getElementById("muser").textContent=u;document.getElementById("mstats").innerHTML=`<div class="dstat"><small>Progreso</small><b>${p}</b></div><div class="dstat"><small>Accesos</small><b>${a}</b></div><div class="dstat"><small>Tiempo total</small><b>${t}</b></div>`;document.getElementById("modal").classList.remove("hidden")}
 function closeModal(){document.getElementById("modal").classList.add("hidden")}
-function exportCSV(){let rows=[["Usuario","Progreso","Accesos","IP","Tiempo total","Último acceso","Comentario","Curso finalizado"],["maria.garcia@empresa.com","100%","14","192.168.1.44","6h 24m","17/09/2026 10:42","No","Sí"],["carlos.lopez@empresa.com","72%","9","192.168.1.45","4h 12m","17/09/2026 09:18","Sí","No"],["ana.martin@empresa.com","46%","6","192.168.1.46","2h 48m","16/09/2026 16:31","Sí","No"],["javier.ruiz@empresa.com","100%","18","192.168.1.47","7h 05m","16/09/2026 13:07","Sí","Sí"]];let csv=rows.map(r=>r.map(v=>`"${v}"`).join(";")).join("\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));a.download="campus_formacion_seguimiento_demo.csv";a.click()}
+function exportCSV(){
+ const log=accessLog(), users=allTrainingUsers();
+ let rows=[["Usuario","Progreso","Accesos","IP","Tiempo total","Último acceso","Comentarios","Curso finalizado"]];
+ users.forEach(u=>{
+   const ul=log.filter(x=>x.user===u).sort((a,b)=>b.date.localeCompare(a.date));
+   const cs=userComments(u);
+   rows.push([u,userProgress(u)+"%",ul.length,"No disponible en demo","No registrado",formatDate(ul[0]?.date||""),cs.length,userProgress(u)===100?"Sí":"No"]);
+ });
+ let csv=rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(";")).join("\\n");
+ let a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\\ufeff"+csv],{type:"text/csv;charset=utf-8"}));a.download="campus_formacion_seguimiento.csv";a.click();URL.revokeObjectURL(a.href);
+}
 </script>
 </body></html>
