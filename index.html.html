@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campus Formación · Grupo Acerca</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f9;color:#172033}
+button,input,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.loginbox{width:430px;background:#fff;border:1px solid #e4e8ee;border-radius:16px;padding:38px;box-shadow:0 15px 45px #111c3314}
+.logo{text-align:center;font-size:25px;font-weight:800;color:#111c33}.logo small{display:block;color:#7f8ba3;font-size:10px;letter-spacing:2px;margin-top:6px}
+.login h1{text-align:center;font-size:21px;margin:30px 0 8px}.sub{text-align:center;color:#718099;font-size:13px;margin-bottom:25px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}.role{border:1px solid #e0e5ec;background:#fff;border-radius:9px;padding:13px;font-weight:700}.role.active{border-color:#2477e8;background:#e8f1ff;color:#2477e8}
+label{display:block;font-size:12px;font-weight:700;margin:13px 0 6px}input,textarea{width:100%;border:1px solid #d9dee7;border-radius:8px;padding:11px;outline:0}input:focus,textarea:focus{border-color:#2477e8}
+.primary{width:100%;border:0;border-radius:8px;padding:12px;background:#2477e8;color:#fff;font-weight:700;margin-top:17px}.error{background:#fff0f0;border:1px solid #f1cccc;color:#c43d3d;padding:9px;border-radius:7px;font-size:12px;margin-bottom:12px}
+.hint{text-align:center;color:#8994a6;font-size:10px;line-height:1.5;margin-top:16px}
+.app{display:flex;min-height:100vh}.side{width:245px;background:#111c33;color:#fff;padding:24px 16px;display:flex;flex-direction:column;flex-shrink:0}.brand{font-size:18px;font-weight:750;padding:4px 10px}.brand small{display:block;color:#7f8ba3;font-size:10px;letter-spacing:1px;margin-top:5px}
+.nav{margin-top:32px}.navtitle{font-size:10px;text-transform:uppercase;color:#73809a;margin:0 10px 10px}.navitem{padding:12px 13px;border-radius:9px;margin:4px 0;color:#b9c3d5;font-size:14px;cursor:pointer}.navitem:hover,.navitem.active{background:#2477e8;color:#fff}
+.profile{margin-top:auto;border-top:1px solid #28344a;padding-top:16px;display:flex;gap:10px;align-items:center}.avatar{width:35px;height:35px;border-radius:50%;background:#2477e8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}.profile small{display:block;color:#8793a9;font-size:9px;margin-top:3px;max-width:165px;overflow:hidden;text-overflow:ellipsis}.logout{padding:11px 8px;color:#aeb8ca;font-size:13px;cursor:pointer;margin-top:8px}
+.main{flex:1;padding:30px 36px;overflow:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}.eyebrow{font-size:11px;color:#718099;letter-spacing:.5px}.title{font-size:27px;margin:5px 0;font-weight:800}.subtitle{font-size:13px;color:#718099}.card,.tablebox{background:#fff;border:1px solid #e4e8ee;border-radius:11px;box-shadow:0 1px 2px #00000005}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:24px}.stat{padding:19px}.stat span{font-size:12px;color:#718099}.stat b{display:block;font-size:27px;margin-top:8px}.blue{color:#2477e8}.green{color:#1d9b63}.orange{color:#d68120}
+.progress{padding:20px;margin-bottom:22px}.phead{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:10px}.pbar{height:9px;background:#e7ebf1;border-radius:8px;overflow:hidden}.pfill{height:100%;background:#2477e8}
+.notice{padding:15px 17px;border-radius:9px;background:#e8f1ff;color:#275f9f;font-size:12px;margin-bottom:20px}
+.sectionhead{padding:18px 20px;border-bottom:1px solid #e8ebf0}.sectiontitle{font-size:16px;font-weight:750}.sectionsub{font-size:12px;color:#8290a5;margin-top:4px}
+.module{padding:16px 20px;border-bottom:1px solid #edf0f4;display:flex;align-items:center;gap:13px}.module:last-child{border:0}.module.locked{opacity:.5}.icon{width:36px;height:36px;border-radius:9px;background:#eef2f7;display:flex;align-items:center;justify-content:center}.mi{flex:1}.mt{font-size:13px;font-weight:700}.mm{font-size:11px;color:#718099;margin-top:4px}.badge{font-size:10px;font-weight:700;padding:5px 8px;border-radius:20px}.done{background:#e5f6ee;color:#168356}.open{background:#e8f1ff;color:#246ec5}.lock{background:#edf0f4;color:#7a879a}.go{border:0;background:#2477e8;color:#fff;border-radius:7px;padding:8px 11px;font-size:11px;font-weight:700}.go:disabled{background:#dfe4eb;color:#8793a4}
+.tablebox{overflow:auto}.table{width:100%;border-collapse:collapse;font-size:12px;min-width:760px}.table th{text-align:left;color:#75839a;background:#fafbfc;padding:12px 18px;border-bottom:1px solid #e8ebf0}.table td{padding:14px 18px;border-bottom:1px solid #edf0f4}.table tr:last-child td{border:0}.view{color:#2477e8;font-weight:700;cursor:pointer}
+.content{padding:24px}.video{height:300px;background:#111c33;border-radius:12px;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px}.play{width:62px;height:62px;border-radius:50%;background:#2477e8;display:flex;align-items:center;justify-content:center;font-size:25px}.complete{border:0;background:#1d9b63;color:#fff;padding:11px 15px;border-radius:8px;font-weight:700;margin-top:20px}.ppt{height:300px;border-radius:12px;background:#243c63;color:#fff;padding:45px;display:flex;flex-direction:column;justify-content:center}.ppt h2{font-size:27px;margin:0 0 10px}.ppt p{color:#d8e2f1;font-size:13px}
+.q{padding:18px 0;border-bottom:1px solid #edf0f4}.q b{display:block;font-size:13px;margin-bottom:10px}.option{display:block;border:1px solid #e0e4eb;padding:9px;border-radius:7px;margin:6px 0;font-weight:400;font-size:12px}
+.empty{text-align:center;padding:50px;color:#718099;font-size:13px}
+.modal{position:fixed;inset:0;background:#111c3377;display:flex;align-items:center;justify-content:center;padding:20px}.modalbox{background:#fff;border-radius:13px;width:min(720px,100%);padding:24px}.modalhead{display:flex;justify-content:space-between}.close{border:0;background:#eef1f5;border-radius:7px;width:32px;height:32px}
+.detail{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.dstat{background:#f7f8fa;padding:13px;border-radius:8px}.dstat small{display:block;color:#718099}.dstat b{display:block;margin-top:5px}
+@media(max-width:900px){.side{width:205px}.cards{grid-template-columns:1fr 1fr}.main{padding:22px}}
+@media(max-width:650px){.app{display:block}.side{width:100%;min-height:auto}.profile{margin-top:20px}.cards{grid-template-columns:1fr 1fr}.top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div id="login" class="login">
+<div class="loginbox">
+<div class="logo">Campus Formación<small>GRUPO ACERCA</small></div>
+<h1>Acceso a la plataforma</h1><div class="sub">Selecciona tu perfil para continuar</div>
+<div class="roles"><button id="rStudent" class="role active" onclick="setRole('student')">👨‍🎓 Formación</button><button id="rAdmin" class="role" onclick="setRole('admin')">👨‍💼 Administrador</button></div>
+<div id="err" class="error hidden"></div>
+<label id="ulabel">Correo electrónico</label><input id="user" placeholder="Introduce tu correo">
+<div id="passWrap" class="hidden"><label>Contraseña</label><input id="pass" type="password" placeholder="Introduce tu contraseña"></div>
+<button class="primary" onclick="login()">Acceder</button>
+<div class="hint">DEMO · Credenciales configuradas únicamente para esta prueba.<br>En producción se sustituirá por autenticación segura.</div>
+</div></div>
+
+<div id="app" class="app hidden">
+<aside class="side">
+<div class="brand">Campus Formación<small id="brandRole">FORMACIÓN · GRUPO ACERCA</small></div>
+<div id="studentNav" class="nav">
+<div class="navtitle">Mi formación</div>
+<div class="navitem active" onclick="studentPage('home',this)">⌂ &nbsp; Inicio</div>
+<div class="navitem" onclick="studentPage('formation',this)">▣ &nbsp; Formación</div>
+<div class="navitem" onclick="studentPage('index',this)">☷ &nbsp; Índice de formación</div>
+<div class="navitem" onclick="studentPage('additional',this)">＋ &nbsp; Contenido adicional</div>
+<div class="navitem" onclick="studentPage('progress',this)">◔ &nbsp; Progreso</div>
+<div class="navitem" onclick="studentPage('doubts',this)">? &nbsp; Dudas sobre el curso</div></div>
+<div id="adminNav" class="nav hidden">
+<div class="navtitle">Administración</div>
+<div class="navitem active" onclick="adminPage('summary',this)">▦ &nbsp; Resumen</div>
+<div class="navitem" onclick="adminPage('courses',this)">▣ &nbsp; Cursos realizados</div>
+<div class="navitem" onclick="adminPage('comments',this)">▤ &nbsp; Comentarios</div></div>
+<div class="profile"><div id="avatar" class="avatar">DO</div><div><b id="pname" style="font-size:12px">David Olivares</b><small id="pemail">davidolivaresfernandez@acerca.info</small></div></div>
+<div class="logout" onclick="logout()">↪ &nbsp; Cerrar sesión</div>
+</aside>
+
+<main class="main">
+<div id="studentArea">
+<section id="s-home"><div class="top"><div><div class="eyebrow">MI FORMACIÓN</div><h1 class="title">Bienvenido</h1><div class="subtitle">Continúa con tu formación desde el punto en el que la dejaste.</div></div></div>
+<div class="card progress"><div class="phead"><span>Progreso de la formación</span><span id="hp">0%</span></div><div class="pbar"><div id="hb" class="pfill" style="width:0%"></div></div></div>
+<div id="notice" class="notice">Tu siguiente paso está disponible. Accede a <b>Video inicial</b> para comenzar.</div>
+<div class="card"><div class="sectionhead"><div class="sectiontitle">Contenido de la formación</div><div class="sectionsub">Los contenidos se desbloquean en orden.</div></div><div id="homeModules"></div></div></section>
+
+<section id="s-formation" class="hidden"><div class="top"><div><div class="eyebrow">FORMACIÓN</div><h1 class="title">Formación</h1><div class="subtitle">Completa cada contenido para desbloquear el siguiente.</div></div></div><div id="formationModules" class="card"></div></section>
+
+<section id="s-index" class="hidden"><div class="top"><div><div class="eyebrow">FORMACIÓN</div><h1 class="title">Índice de formación</h1><div class="subtitle">Vista general de los temas del curso.</div></div></div><div class="notice">El índice muestra la estructura, pero no permite saltar al contenido bloqueado.</div><div class="card">
+<div class="module"><div class="icon">▶</div><div class="mi"><div class="mt">Video inicial</div><div class="mm">Presentación de la formación</div></div></div>
+<div class="module"><div class="icon">1</div><div class="mi"><div class="mt">1. Profundizando en los Conceptos básicos</div><div class="mm">Distribuidora · Mercado regulado · Mercado libre · Peajes de acceso · Test · PPT resumen</div></div></div>
+<div class="module"><div class="icon">2</div><div class="mi"><div class="mt">2. Facturas</div><div class="mm">Partes de una factura · Potencia · Cálculo · Costes adicionales · Test · PPT resumen</div></div></div>
+</div></section>
+
+<section id="s-additional" class="hidden"><div class="top"><div><div class="eyebrow">FORMACIÓN</div><h1 class="title">Contenido adicional</h1><div class="subtitle">Material complementario.</div></div></div><div class="card empty">No hay contenido adicional, estás al día.</div></section>
+
+<section id="s-progress" class="hidden"><div class="top"><div><div class="eyebrow">FORMACIÓN</div><h1 class="title">Progreso</h1><div class="subtitle">Consulta el estado de cada contenido.</div></div></div><div class="card progress"><div class="phead"><span>Progreso total</span><span id="pp">0%</span></div><div class="pbar"><div id="pb" class="pfill" style="width:0%"></div></div></div><div id="progressModules" class="card"></div></section>
+
+<section id="s-doubts" class="hidden"><div class="top"><div><div class="eyebrow">FORMACIÓN</div><h1 class="title">Dudas sobre el curso</h1><div class="subtitle">Envía una consulta al equipo de formación.</div></div></div><div class="card content"><label>Asunto</label><input id="subject" placeholder="Escribe el asunto"><label>Comentario</label><textarea id="comment" rows="7" placeholder="Escribe aquí tu duda o comentario"></textarea><button class="primary" style="width:auto;padding:11px 20px" onclick="sendComment()">Enviar comentario</button></div></section>
+
+<section id="s-content" class="hidden"><div class="top"><div><div class="eyebrow">FORMACIÓN</div><h1 id="ctitle" class="title">Contenido</h1><div id="csub" class="subtitle"></div></div><button class="back" onclick="studentPage('formation',document.querySelectorAll('#studentNav .navitem')[1])">← Volver</button></div><div id="contentBody"></div></section>
+</div>
+
+<div id="adminArea" class="hidden">
+<section id="a-summary"><div class="top"><div><div class="eyebrow">ADMINISTRACIÓN</div><h1 class="title">Resumen</h1><div class="subtitle">Vista general de la actividad de formación.</div></div><button class="excel" onclick="exportCSV()">↓ &nbsp; Descargar Excel</button></div>
+<div class="cards"><div class="card stat"><span>Trabajadores registrados</span><b>48</b></div><div class="card stat"><span>Cursos iniciados</span><b class="blue">41</b></div><div class="card stat"><span>Cursos finalizados</span><b class="green">27</b></div><div class="card stat"><span>Comentarios pendientes</span><b class="orange">5</b></div></div>
+<div class="tablebox"><div class="sectionhead"><div class="sectiontitle">Actividad reciente</div><div class="sectionsub">Últimos trabajadores que han accedido al curso.</div></div><table class="table"><tr><th>Usuario</th><th>Progreso</th><th>Accesos</th><th>Último acceso</th><th>Estado</th></tr>
+<tr><td><b>maria.garcia@empresa.com</b></td><td>100%</td><td>14</td><td>17/09/2026 10:42</td><td><span class="badge done">Finalizado</span></td></tr>
+<tr><td><b>carlos.lopez@empresa.com</b></td><td>72%</td><td>9</td><td>17/09/2026 09:18</td><td><span class="badge open">En curso</span></td></tr>
+<tr><td><b>ana.martin@empresa.com</b></td><td>46%</td><td>6</td><td>16/09/2026 16:31</td><td><span class="badge open">En curso</span></td></tr>
+<tr><td><b>javier.ruiz@empresa.com</b></td><td>100%</td><td>18</td><td>16/09/2026 13:07</td><td><span class="badge done">Finalizado</span></td></tr></table></div></section>
+
+<section id="a-courses" class="hidden"><div class="top"><div><div class="eyebrow">ADMINISTRACIÓN</div><h1 class="title">Cursos realizados</h1><div class="subtitle">Seguimiento detallado de todos los trabajadores.</div></div><button class="excel" onclick="exportCSV()">↓ &nbsp; Descargar Excel</button></div>
+<div class="tablebox"><table class="table"><tr><th>Usuario</th><th>Progreso</th><th>Accesos</th><th>Tiempo total</th><th>Último acceso</th><th>Estado</th><th>Detalle</th></tr>
+<tr><td><b>maria.garcia@empresa.com</b></td><td>100%</td><td>14</td><td>6h 24m</td><td>17/09/2026 10:42</td><td><span class="badge done">Finalizado</span></td><td><span class="view" onclick="detail('maria.garcia@empresa.com','100%','14','6h 24m')">Ver</span></td></tr>
+<tr><td><b>carlos.lopez@empresa.com</b></td><td>72%</td><td>9</td><td>4h 12m</td><td>17/09/2026 09:18</td><td><span class="badge open">En curso</span></td><td><span class="view" onclick="detail('carlos.lopez@empresa.com','72%','9','4h 12m')">Ver</span></td></tr>
+<tr><td><b>ana.martin@empresa.com</b></td><td>46%</td><td>6</td><td>2h 48m</td><td>16/09/2026 16:31</td><td><span class="badge open">En curso</span></td><td><span class="view" onclick="detail('ana.martin@empresa.com','46%','6','2h 48m')">Ver</span></td></tr>
+<tr><td><b>javier.ruiz@empresa.com</b></td><td>100%</td><td>18</td><td>7h 05m</td><td>16/09/2026 13:07</td><td><span class="badge done">Finalizado</span></td><td><span class="view" onclick="detail('javier.ruiz@empresa.com','100%','18','7h 05m')">Ver</span></td></tr></table></div></section>
+
+<section id="a-comments" class="hidden"><div class="top"><div><div class="eyebrow">ADMINISTRACIÓN</div><h1 class="title">Comentarios</h1><div class="subtitle">Dudas y consultas enviadas por los trabajadores.</div></div></div>
+<div class="tablebox"><table class="table"><tr><th>Usuario</th><th>Asunto</th><th>Comentario</th><th>Fecha</th><th>Estado</th></tr>
+<tr><td><b>carlos.lopez@empresa.com</b></td><td>Acceso al módulo 3</td><td>No me aparece desbloqueado el siguiente contenido.</td><td>17/09/2026</td><td><span class="badge open">Pendiente</span></td></tr>
+<tr><td><b>ana.martin@empresa.com</b></td><td>Duda sobre tarifarios</td><td>¿Dónde puedo consultar el ejemplo que vimos en el vídeo?</td><td>16/09/2026</td><td><span class="badge open">Pendiente</span></td></tr>
+<tr><td><b>javier.ruiz@empresa.com</b></td><td>Finalización</td><td>He terminado el curso correctamente.</td><td>16/09/2026</td><td><span class="badge done">Revisado</span></td></tr></table></div></section>
+</div>
+</main></div>
+
+<div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()"><div class="modalbox"><div class="modalhead"><div><div class="eyebrow">FICHA DEL TRABAJADOR</div><h2 id="muser" style="margin:4px 0 0;font-size:20px"></h2></div><button class="close" onclick="closeModal()">×</button></div><div id="mstats" class="detail"></div><h3 style="font-size:14px">Historial de accesos</h3><div class="tablebox"><table class="table" style="min-width:0"><tr><th>Fecha y hora</th><th>IP</th><th>Duración</th></tr><tr><td>17/09/2026 09:18</td><td>192.168.1.45</td><td>34 min</td></tr><tr><td>16/09/2026 16:02</td><td>192.168.1.45</td><td>51 min</td></tr><tr><td>15/09/2026 10:21</td><td>192.168.1.46</td><td>42 min</td></tr></table></div></div></div>
+
+<script>
+const STUDENT="davidolivaresfernandez@acerca.info", ADMIN="AdminFormacion", PASS="FormacionAcerca";
+let role="student", user="", current=0;
+let done=JSON.parse(localStorage.getItem("acerca_progress")||"[]");
+let sent=JSON.parse(localStorage.getItem("acerca_comments")||"[]");
+
+const mods=[
+["intro","video","Video inicial","Presentación de la formación"],
+["dist","video","¿De qué se encarga la distribuidora?","1. Profundizando en los Conceptos básicos · Vídeo"],
+["reg","video","Mercado regulado","1. Profundizando en los Conceptos básicos · Vídeo"],
+["libre","video","Mercado libre","1. Profundizando en los Conceptos básicos · Vídeo"],
+["peajes","video","¿Qué son los peajes de acceso y cómo gestionarlos?","1. Profundizando en los Conceptos básicos · Vídeo"],
+["test1","test","Formulario tipo test · Conceptos básicos","1. Profundizando en los Conceptos básicos · Test"],
+["ppt1","ppt","Resumen · Conceptos básicos","1. Profundizando en los Conceptos básicos · PPT"],
+["fact1","video","Partes de una factura","2. Facturas · Vídeo"],
+["fact2","video","Partes de una factura que nunca se tienen en cuenta","2. Facturas · Vídeo"],
+["power","video","Todo sobre la potencia","2. Facturas · Vídeo"],
+["calc","video","Cómo calcular una factura","2. Facturas · Vídeo"],
+["costs","video","Costes adicionales que se puede encontrar el cliente","2. Facturas · Vídeo · Coste de alta y cambios de potencia"],
+["test2","test","Formulario tipo test · Facturas","2. Facturas · Test"],
+["ppt2","ppt","Resumen · Facturas","2. Facturas · PPT"]
+];
+
+function setRole(r){role=r;document.getElementById("rStudent").classList.toggle("active",r==="student");document.getElementById("rAdmin").classList.toggle("active",r==="admin");document.getElementById("passWrap").classList.toggle("hidden",r!=="admin");document.getElementById("ulabel").textContent=r==="student"?"Correo electrónico":"Usuario";document.getElementById("user").placeholder=r==="student"?"Introduce tu correo":"Introduce tu usuario";document.getElementById("user").value="";document.getElementById("pass").value="";document.getElementById("err").classList.add("hidden")}
+function login(){
+let u=document.getElementById("user").value.trim(),p=document.getElementById("pass").value;
+let ok=(role==="student"&&u.toLowerCase()===STUDENT.toLowerCase())||(role==="admin"&&u===ADMIN&&p===PASS);
+if(!ok){let e=document.getElementById("err");e.textContent=role==="student"?"Correo no autorizado.":"Usuario o contraseña incorrectos.";e.classList.remove("hidden");return}
+user=u;document.getElementById("login").classList.add("hidden");document.getElementById("app").classList.remove("hidden");document.getElementById("studentArea").classList.toggle("hidden",role!=="student");document.getElementById("adminArea").classList.toggle("hidden",role!=="admin");document.getElementById("studentNav").classList.toggle("hidden",role!=="student");document.getElementById("adminNav").classList.toggle("hidden",role!=="admin");document.getElementById("brandRole").textContent=role==="student"?"FORMACIÓN · GRUPO ACERCA":"ADMINISTRACIÓN · GRUPO ACERCA";document.getElementById("pname").textContent=role==="student"?"David Olivares":"Administrador";document.getElementById("pemail").textContent=u;document.getElementById("avatar").textContent=role==="student"?"DO":"AD";if(role==="student"){render();studentPage("home",document.querySelector("#studentNav .navitem"))}else adminPage("summary",document.querySelector("#adminNav .navitem"))}
+function logout(){document.getElementById("app").classList.add("hidden");document.getElementById("login").classList.remove("hidden");setRole("student")}
+function unlocked(i){return i===0||done.includes(mods[i-1][0])}function completed(id){return done.includes(id)}
+function pct(){return Math.round(done.length/mods.length*100)}
+function render(){let p=pct();document.getElementById("hp").textContent=p+"%";document.getElementById("hb").style.width=p+"%";document.getElementById("pp").textContent=p+"%";document.getElementById("pb").style.width=p+"%";["homeModules","formationModules","progressModules"].forEach((x,j)=>list(x,j===2));let n=mods.findIndex((m,i)=>unlocked(i)&&!completed(m[0]));document.getElementById("notice").innerHTML=p===100?"<b>Formación completada.</b> Has terminado todos los contenidos de esta demo.":n>=0?"Tu siguiente paso es <b>"+mods[n][2]+"</b>. Completa el contenido para desbloquear el siguiente.":""}
+function list(id,only){let box=document.getElementById(id),html="";mods.forEach((m,i)=>{let u=unlocked(i),d=completed(m[0]);html+=`<div class="module ${u?"":"locked"}"><div class="icon">${d?"✓":m[1]==="video"?"▶":m[1]==="test"?"✓":"▤"}</div><div class="mi"><div class="mt">${m[2]}</div><div class="mm">${m[3]}</div></div><span class="badge ${d?"done":u?"open":"lock"}">${d?"Completado":u?"Disponible":"Bloqueado"}</span><button class="go" ${u?"":"disabled"} onclick="openContent(${i})">${d?"Revisar":"Acceder"}</button></div>`});box.innerHTML=html}
+function studentPage(page,el){document.querySelectorAll("#studentArea>section").forEach(s=>s.classList.add("hidden"));document.getElementById("s-"+page).classList.remove("hidden");document.querySelectorAll("#studentNav .navitem").forEach(x=>x.classList.remove("active"));if(el)el.classList.add("active");render()}
+function openContent(i){if(!unlocked(i))return;current=i;let m=mods[i];document.querySelectorAll("#studentArea>section").forEach(s=>s.classList.add("hidden"));document.getElementById("s-content").classList.remove("hidden");document.getElementById("ctitle").textContent=m[2];document.getElementById("csub").textContent=m[3];let body="";
+if(m[1]==="video")body=`<div class="card content"><div class="video"><div class="play">▶</div><div style="font-size:12px;color:#aeb9cb">VÍDEO DEMO · Aquí se insertará tu vídeo real</div></div><h2 style="font-size:21px">${m[2]}</h2><p style="font-size:13px;color:#718099;line-height:1.6">Este espacio quedará preparado para el vídeo de formación que subirás posteriormente.</p><button class="complete" onclick="finish()">✓ Marcar vídeo como completado</button></div>`;
+else if(m[1]==="ppt")body=`<div class="card content"><div class="ppt"><h2>${m[2]}</h2><p>Vista previa del PPT resumen. En la versión definitiva podrás visualizar el documento real dentro de la plataforma.</p></div><button class="complete" onclick="finish()">✓ Marcar resumen como visto</button></div>`;
+else body=`<div class="card content"><h2 style="margin-top:0">Formulario tipo test</h2><p style="font-size:13px;color:#718099">Demo funcional. Debes acertar las dos preguntas para continuar.</p><div class="q"><b>1. ¿Qué debe ocurrir para desbloquear el siguiente contenido?</b><label class="option"><input type="radio" name="q1" value="a"> Completar el contenido actual</label><label class="option"><input type="radio" name="q1" value="b"> Entrar varias veces</label></div><div class="q"><b>2. ¿Puede el trabajador volver a un contenido completado?</b><label class="option"><input type="radio" name="q2" value="a"> Sí</label><label class="option"><input type="radio" name="q2" value="b"> No</label></div><button class="complete" onclick="test()">✓ Finalizar test</button></div>`;
+document.getElementById("contentBody").innerHTML=body}
+function finish(){if(!done.includes(mods[current][0]))done.push(mods[current][0]);localStorage.setItem("acerca_progress",JSON.stringify(done));render();alert("Contenido completado. El siguiente queda desbloqueado.");openContent(current)}
+function test(){let a=document.querySelector('input[name="q1"]:checked'),b=document.querySelector('input[name="q2"]:checked');if(!a||!b)return alert("Completa todas las preguntas.");if(a.value!=="a"||b.value!=="a")return alert("Hay una respuesta incorrecta. Inténtalo de nuevo.");finish()}
+function sendComment(){let s=document.getElementById("subject").value.trim(),c=document.getElementById("comment").value.trim();if(!s||!c)return alert("Completa el asunto y el comentario.");sent.push({user,subject:s,comment:c,date:new Date().toLocaleString("es-ES")});localStorage.setItem("acerca_comments",JSON.stringify(sent));document.getElementById("subject").value="";document.getElementById("comment").value="";alert("Comentario enviado correctamente. En producción se enviará también al correo configurado.")}
+function adminPage(page,el){document.querySelectorAll("#adminArea>section").forEach(s=>s.classList.add("hidden"));document.getElementById("a-"+page).classList.remove("hidden");document.querySelectorAll("#adminNav .navitem").forEach(x=>x.classList.remove("active"));if(el)el.classList.add("active")}
+function detail(u,p,a,t){document.getElementById("muser").textContent=u;document.getElementById("mstats").innerHTML=`<div class="dstat"><small>Progreso</small><b>${p}</b></div><div class="dstat"><small>Accesos</small><b>${a}</b></div><div class="dstat"><small>Tiempo total</small><b>${t}</b></div>`;document.getElementById("modal").classList.remove("hidden")}
+function closeModal(){document.getElementById("modal").classList.add("hidden")}
+function exportCSV(){let rows=[["Usuario","Progreso","Accesos","IP","Tiempo total","Último acceso","Comentario","Curso finalizado"],["maria.garcia@empresa.com","100%","14","192.168.1.44","6h 24m","17/09/2026 10:42","No","Sí"],["carlos.lopez@empresa.com","72%","9","192.168.1.45","4h 12m","17/09/2026 09:18","Sí","No"],["ana.martin@empresa.com","46%","6","192.168.1.46","2h 48m","16/09/2026 16:31","Sí","No"],["javier.ruiz@empresa.com","100%","18","192.168.1.47","7h 05m","16/09/2026 13:07","Sí","Sí"]];let csv=rows.map(r=>r.map(v=>`"${v}"`).join(";")).join("\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));a.download="campus_formacion_seguimiento_demo.csv";a.click()}
+</script>
+</body></html>
